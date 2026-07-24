@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Онлайн Библиотека & ИИ Поиск</title>
+    <!-- Подключаем Bootstrap для красивых стилей и форм -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .header-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-radius: 0 0 20px 20px;
+        }
+        .search-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Шапка сайта -->
+<div class="header-section text-center">
+    <div class="container">
+        <h1 class="fw-bold">📚 Умная Библиотека</h1>
+        <p class="lead">Найдите бесплатную книгу с помощью ИИ или выберите из нашего каталога</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <!-- Форма ИИ-Поиска -->
+            <div class="card search-card p-4 mb-5">
+                <h3 class="text-primary mb-3 text-center">🔍 ИИ-Поиск бесплатной книги</h3>
+                <p class="text-muted text-center fs-6">
+                    Введите название и автора. Наш ИИ найдет прямую ссылку на бесплатное чтение в легальных архивах.
+                </p>
+
+                <!-- Форма отправляет данные на ваш контроллер /book/ai-find -->
+                <form action="/book/ai-find" method="GET" target="_blank">
+                    <div class="mb-3">
+                        <label for="title" class="form-label fw-bold">Название книги</label>
+                        <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="Например: Harry Potter" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="author" class="form-label fw-bold">Автор</label>
+                        <input type="text" class="form-control form-control-lg" id="author" name="author" placeholder="Например: J.K. Rowling" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg w-100 mt-2">
+                        🚀 Найти и прочитать
+                    </button>
+                </form>
+            </div>
+
+            <!-- Форма покупки книги по ID -->
+            <div class="card search-card p-4 mb-5">
+                <h3 class="text-success mb-3 text-center">🛒 Покупка книги из базы</h3>
+                <form action="/book/buyBook" method="GET">
+                    <div class="mb-3">
+                        <label for="id" class="form-label fw-bold">ID Книги в базе данных</label>
+                        <input type="number" class="form-control" id="id" name="id" placeholder="Например: 1" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">
+                        Купить книгу
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
